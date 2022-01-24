@@ -30,21 +30,9 @@
           </div>
 
           <div style="text-align: end">
-            <label
-              >Date:
-              <script>
-                document.write(
-                  new Date()
-                    .toJSON()
-                    .slice(0, 10)
-                    .split("-")
-                    .reverse()
-                    .join("/")
-                );
-              </script></label
-            >
+            <label id="dateLabel"> </label>
           </div>
-
+          <br />
           <form name="google-sheet" id="google-sheet">
             <div id="form_alerts"></div>
             <div class="row">
@@ -55,7 +43,7 @@
                 <input
                   type="text"
                   id="executiveName"
-                  name="executiveName"
+                  name="Executive Name"
                   class="form-control"
                   tabindex="1"
                   required
@@ -225,6 +213,8 @@
                 rows="2"
               ></textarea>
             </div>
+
+            <input type="hidden" id="Date" name="Date" class="form-control" />
             <div style="text-align: center">
               <button class="btn btn-primary me-2" type="submit" tabindex="14">
                 Submit
@@ -240,6 +230,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="main.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbw-rBvSHvN8WGpbCjjuxlC8p2wPDrYtuPFNWCpEge6pw88XvXbr__cd1TuDRP_iH4qPOA/exec";
+  "https://script.google.com/macros/s/AKfycbyqknsKyi5E8PFP-QTRfsniSRf0m5bJQV9W0Yj5VfgpnFKH2VjsBWxBE7PhlilXQOvr/exec";
 
 const exec1URL =
   "https://script.google.com/macros/s/AKfycbwty365Cpz3vtwcr-N-fE4yPO3IhSwq9roJN1mQuENapxBIK0gjxflUgsPVrcn4EcNgUQ/exec";
@@ -38,6 +38,9 @@ form.addEventListener("submit", (e) => {
 });
 
 $(document).ready(function () {
+  let currentDate = getCurrentDate().toString();
+  document.getElementById("dateLabel").innerHTML = "Date: " + currentDate;
+  document.getElementById("Date").innerHTML = currentDate;
   $(window).keydown(function (event) {
     if (event.keyCode == 13) {
       event.preventDefault();
@@ -66,4 +69,9 @@ function submitDetails(url, form) {
       removeLoader();
       alert("Failed to submit the details.");
     });
+}
+
+function getCurrentDate() {
+  let date = new Date().toJSON().slice(0, 10).split("-").reverse().join("/");
+  return date;
 }

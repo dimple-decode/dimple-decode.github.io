@@ -11,6 +11,10 @@ const form = document.forms["google-sheet"];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  if (!form.checkValidity()) {
+    return false;
+  }
+  showLoader();
   var name = document.getElementById("executiveName").value;
   name = name.trim().replace(/\s/g, "").toLowerCase();
   fetch(scriptURL, { method: "post", body: new FormData(form) })
@@ -33,8 +37,15 @@ form.addEventListener("submit", (e) => {
     });
 });
 
+$(document).ready(function () {
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
 function showLoader() {
-  e.preventDefault();
   $("#mainDiv").addClass("disabledForm");
   document.getElementById("loader").style.display = "block";
 }

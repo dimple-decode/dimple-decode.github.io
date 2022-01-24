@@ -1,1 +1,280 @@
-<p>Hello World</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Daily Visit Report</title>
+  </head>
+  <body>
+ <div  id="loader" class="spinner-border text-primary"></div>
+    <div class="container py-5" id="mainDiv">
+      <div class="row">
+        <div
+          class="col-lg-12 col-md-12 mx-auto shadow border bg-white p-4 rounded"
+        >
+          <h2 class="text-center fw-bold mb-3">Daily Visit Report</h2>
+          <div style="text-align: end">
+            <label
+              >Date:
+              <script>
+                document.write(
+                  new Date()
+                    .toJSON()
+                    .slice(0, 10)
+                    .split("-")
+                    .reverse()
+                    .join("/")
+                );
+              </script></label
+            >
+          </div>
+
+          <form name="google-sheet" id="google-sheet">
+            <div id="form_alerts"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="executiveName" class="form-label"
+                  >Name Of Executive</label
+                >
+                <input
+                  type="text"
+                  id="executiveName"
+                  name="executiveName"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="shopName" class="form-label">Shop Name</label>
+                <input
+                  type="text"
+                  id="shopName"
+                  name="Shop name"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="Address"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="area" class="form-label">Area</label>
+                <input
+                  type="text"
+                  id="area"
+                  name="Area"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="landmark" class="form-label">Landmark</label>
+                <input
+                  type="text"
+                  id="landmark"
+                  name="Landmark"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="region" class="form-label">Region</label>
+                <input
+                  type="text"
+                  id="region"
+                  name="Region"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="contactPerson" class="form-label"
+                  >Contact Person ( In charge/ Manager)
+                </label>
+                <input
+                  type="text"
+                  id="contactPerson"
+                  name="Contact Person ( In charge/ Manager)"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  name="Phone number"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="contactPerson" class="form-label"
+                  >Required Product(s)
+                </label>
+                <input
+                  type="text"
+                  id="requiredProducts"
+                  name="Required Product(s)"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="rate" class="form-label">Rate (in AED)</label>
+                <input
+                  type="text"
+                  id="rate"
+                  name="Rate (in AED)"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="soldProducts" class="form-label"
+                  >Sold Product(s)
+                </label>
+                <input
+                  type="text"
+                  id="soldProducts"
+                  name="Sold Product(s)"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="value" class="form-label">Value (in AED)</label>
+                <input
+                  type="text"
+                  id="value"
+                  name="Value (in AED)"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="remarks" class="form-label">Remarks</label>
+              <textarea
+                id="remarks"
+                name="Remarks"
+                class="form-control"
+                rows="2"
+                
+              ></textarea>
+            </div>
+            <div style="text-align: center">
+              <button class="btn btn-primary me-2" type="submit" onclick="showLoader()">Submit</button>
+              <button class="btn btn-danger" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+ 
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbw-rBvSHvN8WGpbCjjuxlC8p2wPDrYtuPFNWCpEge6pw88XvXbr__cd1TuDRP_iH4qPOA/exec";
+		
+		const exec1URL="https://script.google.com/macros/s/AKfycbwty365Cpz3vtwcr-N-fE4yPO3IhSwq9roJN1mQuENapxBIK0gjxflUgsPVrcn4EcNgUQ/exec";
+		const exec2URL="https://script.google.com/macros/s/AKfycbzbMA36PH15SprPWvIhdVcAvTrzGVemc4wdNmF2DX3A5xJiK6B0Av70bmW3vjC-SreNTw/exec";
+		const exec3URL="https://script.google.com/macros/s/AKfycbwRjIEohkQb9v8tkMAKrC3ay6nLnHj0qbIl0b59tVch5F0pmDkmnJYbj9WGk2x-41bzCA/exec";
+      const form = document.forms["google-sheet"];
+        
+      form.addEventListener("submit", (e) => {
+	    
+        e.preventDefault(); 
+		var name = document.getElementById('executiveName').value;
+		name= name.trim().replace(/\s/g, '').toLowerCase();
+        fetch(scriptURL, { method: "post", body: new FormData(form) }) 
+          .then((response) => {
+		
+		   if(name === "abubakkar"){
+		  
+		 submitDetails(exec1URL, form)               
+		}	
+		else if(name === "nowshad"){
+		
+		  submitDetails(exec2URL, form)      
+		
+		} else if(name === "shaheer"){
+		 submitDetails(exec3URL, form)     
+		}
+		else{
+		form.reset();
+		removeLoader();
+		alert('Details submitted successfully.')
+		}
+		  }     	
+			 	
+			).catch(error=>
+			{removeLoader();
+			 alert('Failed to submit the details.')}
+			); 
+         
+		  
+});
+function showLoader(){
+$("#mainDiv").addClass("disabledForm");
+ document.getElementById("loader").style.display = "block"; 
+ 
+}
+function submitDetails(url, form){
+ fetch(exec2URL, { method: "post", body: new FormData(form) }) 
+          .then((response) => 
+		  {
+				form.reset();
+				removeLoader();
+				alert('Details submitted successfully.')
+
+		}
+          ).catch((error) =>  {  
+	  removeLoader();
+         alert('Failed to submit the details.')}
+          );    
+}
+	  
+	  
+	 function removeLoader(){
+	 $("#mainDiv").removeClass("disabledForm");
+	 document.getElementById("loader").style.display = "none";	
+	 }
+    </script>
+  </body>
+</html>

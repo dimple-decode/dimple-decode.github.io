@@ -41,12 +41,12 @@ $(document).ready(function () {
   let currentDate = getCurrentDate().toString();
   document.getElementById("dateLabel").innerHTML = "Date: " + currentDate;
   document.getElementById("Date").innerHTML = currentDate;
-  $(window).keydown(function (event) {
-    if (event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
+  // $(window).keydown(function (event) {
+  //   if (event.keyCode == 13) {
+  //     event.preventDefault();
+  //     return false;
+  //   }
+  // });
 });
 function showLoader() {
   $("#mainDiv").addClass("disabledForm");

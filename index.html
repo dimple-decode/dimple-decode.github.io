@@ -155,7 +155,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                <label for="contactPerson" class="form-label required"
+                <label for="contactPerson" class="form-label"
                   >Required Product(s)
                 </label>
                 <input
@@ -165,11 +165,11 @@
                   class="form-control"
                   tabindex="9"
                   onkeydown="return event.key != 'Enter';"
-                  required
+                  
                 />
               </div>
               <div class="col-md-6">
-                <label for="rate" class="form-label required"
+                <label for="rate" class="form-label"
                   >Rate (in AED)</label
                 >
                 <input
@@ -179,14 +179,14 @@
                   class="form-control"
                   tabindex="10"
                   onkeydown="return event.key != 'Enter';"
-                  required
+                  
                 />
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6">
-                <label for="soldProducts" class="form-label required"
+                <label for="soldProducts" class="form-label"
                   >Sold Product(s)
                 </label>
                 <input
@@ -196,11 +196,11 @@
                   class="form-control"
                   tabindex="11"
                   onkeydown="return event.key != 'Enter';"
-                  required
+                  
                 />
               </div>
               <div class="col-md-6">
-                <label for="value" class="form-label required"
+                <label for="value" class="form-label"
                   >Value (in AED)</label
                 >
                 <input
@@ -210,10 +210,26 @@
                   class="form-control"
                   tabindex="12"
                   onkeydown="return event.key != 'Enter';"
-                  required
+                  
                 />
               </div>
             </div>
+			
+			<div class="row">
+			 <div class="col-md-6">
+                <label for="modeofpayment" class="form-label"
+                  >Mode Of Payment</label
+                >
+               <select id="modeofPayment" name="Mode Of Payment" class="form-select form-select-md" aria-label=".form-select-sm example">
+				  <option selected>Select</option>
+				  <option value="Cash">Cash</option>
+				  <option value="Credit">Credit</option>
+				</select>
+              </div>
+			  
+			
+			</div>
+			<br/>
 
             <div class="form-group mb-3">
               <label for="remarks" class="form-label">Remarks</label>

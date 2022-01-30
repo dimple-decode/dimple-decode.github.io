@@ -19,9 +19,9 @@ form.addEventListener("submit", (e) => {
   name = name.trim().replace(/\s/g, "").toLowerCase();
   fetch(scriptURL, { method: "post", body: new FormData(form) })
     .then((response) => {
-      if (name === "abubakkar") {
+      if (name === "aboobakkar") {
         submitDetails(exec1URL, form);
-      } else if (name === "nowshad") {
+      } else if (name === "noushad") {
         submitDetails(exec2URL, form);
       } else if (name === "shaheer") {
         submitDetails(exec3URL, form);
